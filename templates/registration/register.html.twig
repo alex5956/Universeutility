@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Enregistrement{% endblock %}
+{% block body %}
+    {% block stylesheets %}
+        {{ parent() }}
+    {% endblock %}
+    {% form_theme  registrationForm 'bootstrap_4_layout.html.twig' %}
+    <div class="preloader"></div>
+    <h1>Inscription</h1>
+{#    <div>#}
+{#        <input  id="search" name="search" value="votre recherche">#}
+{#    </div>#}
+
+    <div class="container">
+        <div class="col-12">
+        {{ form_start(registrationForm) }}
+        {{ form_row(registrationForm.firstname) }}
+        {{ form_row(registrationForm.name) }}
+        {{ form_row(registrationForm.age) }}
+        {{ form_row(registrationForm.email) }}
+        {{ form_row(registrationForm.plainPassword)}}
+        {{ form_row(registrationForm.telephone) }}
+        {{ form_row(registrationForm.file,{attr:{'placeholder':'veuillez importer un fichier pdf au choix '}})}}
+        {{ form_row(registrationForm.agreeTerms) }}
+        <button id="register" type="submit" class="btn btn-primary" >Enregistrer!</button>
+        {{ form_end(registrationForm) }}
+            </div>
+    </div>
+
+
+    {% block javascripts %}
+{#        <script type="text/javascript">#}
+
+{#            $(document).ready(function() {#}
+{#                $('.preloader').fadeOut('slow');#}
+{#                console.log('coucou');#}
+{#            });#}
+{#            </script>#}
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+        <script src="https://js.stripe.com/v3/"></script>
+{#        <script src="./{{ asset('build/stripe.js') }}"></script>#}
+    {% endblock %}
+{% endblock %}
+
+
+
+
+
+
+
+
+

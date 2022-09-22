@@ -1,0 +1,4 @@
+.env
+deploy.sh
+.download.sh
+.connection.sh

@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bienvenue !{% endblock %}
+
+{% block body %}
+    <div class="container">
+    <div class="row">
+        <div class="col-8 col-sm-8"></div>
+            <div class="col-8 col-sm-8"><h2> Alexandre Marillesse</h2></div>
+        <div class="col-8 col-sm-8"></div>
+    </div>
+    <div class="row">
+        <div class="col"></div>
+        <div class="col"></div>
+    </div>
+    <div class="row">
+       <a  class="btn btn-primary col col-xs-2" href="{{ path('app_register') }}">Formulaire enregistrement</a>
+        <a class="btn btn-primary col col-xs-2" href="{{  path('app_login') }}">Login</a>
+        <a class="btn btn-primary col col-xs-2" href="{{  path('app_contact')}}">Contact</a>
+    </div>
+  {#  <div class="form-group">
+        <label for="comment">Comment:</label>
+        <textarea class="form-control" rows="5" id="comment"></textarea>
+    </div>#}
+    <p>Developpeur</p>
+{% block stylesheets %}
+   {{ parent() }}
+    {{ encore_entry_link_tags('acceuil') }}
+    {{ encore_entry_link_tags('algolia-autocomplete') }}
+{%  endblock  %}
+<div class="container">
+    <br>Bonjour ! , bienvenue sur la Page de UniverseUtility, moi Alexandre Marillesse je suis son créateur<br>
+    J'ai 27 ans et je suis actuellent à la recherche d'un emploi dans le domaine de l'administration système et réseau ou dans le développement<br>
+    j'ai un BTS SIO obtenu à Gaston Berger en 2016 et une lience professionnelle SIO obtenue en 2018.
+    Par la suite j'ai aussi effectué une formation en developpement web comme chez M2i mais aussi chez ib-formation.Un organisme qui appartient au groupe Cegos.
+    Cette formation que je suis en train de suivre jusque juin 2022</p>
+{#    <input  id="search" name="search" autocomplete-url="app_login_autocomplete" value="Votre recherche">#}
+</div>
+    <div class="col col-md">Voici mon CV<br>
+        <a class="btn btn-primary" href="{{  path('download_cv') }}">Télécharger</a>
+    </div>
+     {#       {{ app.session.id }}
+    <div class="col-12 col-md">
+    {%  if form2 is defined %}
+        {{ form_start(form2,{'attr': {'id': 'form2'}})  }}
+        {{ form_row(form2.file,{attr:{'placeholder':'veuillez importer votre CV'}}) }}
+    {{ form_widget(form2) }}
+    <button type="submit" class="btn btn-primary">Enregistrer!</button>
+    {{ form_end(form2) }}
+    {%  endif %}
+    <div class="progress">
+        <div class="progress-bar"></div>
+    </div>
+        <div>#}
+
+
+{#            <p>Requete</p>#}
+
+            </div>
+        </div>
+    </div>
+{%  block javascripts %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js" integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js" integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous"></script>
+    {#{{  encore_entry_script_tags('algolia-autocompleteJS') }}
+    {{  encore_entry_script_tags('uploadedVideo') }}#}
+{% endblock %}
+{% endblock %}
