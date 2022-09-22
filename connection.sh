@@ -1,1 +1,0 @@
-sshpass -p "6uXNQPNabe6eyXQ"  ssh  -t bbzhivt@ssh.cluster031.hosting.ovh.net " cd www/SiteWebUniverseUtility  ; php bin/console cache:clear ; bash --login"
