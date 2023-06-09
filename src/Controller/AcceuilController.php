@@ -4,6 +4,7 @@ namespace App\Controller;
 
 
 use App\Entity\Product;
+use App\Entity\User;
 use App\Form\UserType;
 use App\Manager\ProductManager;
 use App\Repository\UserRepository;
@@ -27,8 +28,6 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mime\Email;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
-use App\Entity\User;
-
 
 class AcceuilController extends AbstractController
 {
@@ -100,6 +99,7 @@ class AcceuilController extends AbstractController
 //
 //        }
 //
+        $zipArchive= new \ZipArchive();
         /** @var User $user */
          $user=new User();
         $form2 = $this->createForm(UserType::class, $user);
@@ -119,8 +119,6 @@ class AcceuilController extends AbstractController
                 $destination,
                 $newFilename
             // $this->getParameter('files_directory'),
-
-
             );
 
     }

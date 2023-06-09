@@ -3,4 +3,5 @@ twig:
 
 when@test:
     twig:
+        cache: false
         strict_variables: true

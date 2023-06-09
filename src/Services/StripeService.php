@@ -71,5 +71,6 @@ class StripeService
             $product->getName(),
             $stripeParameter
         );
+
     }
 }

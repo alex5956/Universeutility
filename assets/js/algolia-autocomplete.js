@@ -15,6 +15,7 @@ $(document).ready(function() {
                         cb(data.users);
                     });
                 },
+
                 displayKey: 'email',
                 debounce: 500// only request every 1/2 second
             }
