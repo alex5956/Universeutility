@@ -139,7 +139,6 @@ class AcceuilController extends AbstractController
 
 
         return $this->render( 'acceuil/index.html.twig',[
-            'products' => $productManager->getProducts(),
             'form2' => $form2->createView(),
 
             'fichier'=>$request->files->all(),

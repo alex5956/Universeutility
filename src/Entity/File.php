@@ -14,33 +14,19 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class File
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id, ORM\GeneratedValue, ORM\Column(type: "integer")]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: "string", length: 255)]
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: "string", length: 255)]
     private $date_Upload;
 
-    /**
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Column(type: "integer")]
     private $size;
 
-    /**
-     * @ORM\Column(type="string")
-     * @Assert\NotBlank(message="Please, upload your CV")
-     * @Assert\File(mimeTypes={ "image/png", "application/octet-stream","application/pdf"})
-     */
+    #[ORM\Column(type: "string"), Assert\NotBlank(message: "Please, upload your CV"), Assert\File(mimeTypes: ["image/png", "application/octet-stream","application/pdf"])]
     private $fichier;
 
     /**

@@ -2,47 +2,40 @@
 
 {% block title %}Bienvenue !{% endblock %}
 
+
 {% block body %}
-   {% extends 'base.html.twig' %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-6 mx-auto text-center">
+                <h2>Alexandre Marillesse</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+                <div class="col-12 text-center">
+                        <a class="btn btn-primary btn-block " href="{{ path('app_register') }}">Formulaire enregistrement</a>
+                        <a class="btn btn-primary btn-block " href="{{ path('app_login') }}">Login</a>
+                        <a class="btn btn-primary btn-block " href="{{ path('app_contact') }}">Contact</a>
+                </div>
+        </div>
+    <p>Developpeur</p>
+    </div>
 
-   {% block title %}Bienvenue !{% endblock %}
-
-   {% block body %}
-       <div class="container">
-           <div class="row">
-               <div class="col-8 col-sm-8 col-sm-12 col-md-6"></div>
-               <div class="col-8 col-sm-8 col-sm-12 col-md-6"><h2> Alexandre Marillesse</h2></div>
-               <div class="col-8 col-sm-8 col-sm-12 col-md-6"></div>
-           </div>
-           <div class="row">
-               <div class="col"></div>
-               <div class="col"></div>
-           </div>
-           <div class="row">
-               <div class="col-8 col-sm-8 col-sm-12 col-md-6">
-                   <a class="btn btn-primary" href="{{ path('app_register') }}">Formulaire enregistrement</a>
-               </div>
-           </div>
-           <div class="row">
-               <div class="col-8 col-sm-8 col-sm-12 col-md-6">
-                   <a class="btn btn-primary" href="{{  path('app_login') }}">Login</a>
-               </div>
-           </div>
-           <div class="row">
-               <div class="col-8 col-sm-8 col-sm-12 col-md-6">
-                   <a class="btn btn-primary" href="{{  path('app_contact')}}">Contact</a>
-               </div>
-           </div>
-       </div>
   {#  <div class="form-group">
         <label for="comment">Comment:</label>
         <textarea class="form-control" rows="5" id="comment"></textarea>
     </div>#}
-    <p>Developpeur</p>
+
 {% block stylesheets %}
    {{ parent() }}
     {{ encore_entry_link_tags('acceuil') }}
     {{ encore_entry_link_tags('algolia-autocomplete') }}
+    <style>
+        @media (max-width: 767.98px) {
+            .flex-md-row {
+                flex-direction: column;
+            }
+        }
+    </style>
 {%  endblock  %}
 <div class="container">
     <br>Bonjour ! , bienvenue sur la Page de UniverseUtility, moi Alexandre Marillesse je suis son créateur<br>
@@ -50,11 +43,12 @@
     j'ai un BTS SIO obtenu à Gaston Berger en 2016 et une lience professionnelle SIO obtenue en 2018.
     Par la suite j'ai aussi effectué une formation en developpement web comme chez M2i mais aussi chez ib-formation.Un organisme qui appartient au groupe Cegos.
     Cette formation que je suis en train de suivre jusque juin 2022.Actuellement je suis mastère de cybersécurité à l'esgi Lille </p>
-{#    <input  id="search" name="search" autocomplete-url="app_login_autocomplete" value="Votre recherche">#}
-</div>
     <div class="col col-md">Voici mon CV<br>
         <a class="btn btn-primary" href="{{  path('download_cv') }}">Télécharger</a>
     </div>
+{#    <input  id="search" name="search" autocomplete-url="app_login_autocomplete" value="Votre recherche">#}
+</div>
+
      {#       {{ app.session.id }}
     <div class="col-12 col-md">
     {%  if form2 is defined %}
@@ -71,7 +65,7 @@
 
 
 {#            <p>Requete</p>#}
-</div>
+
 {%  block javascripts %}
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/autocomplete.js/0/autocomplete.jquery.min.js"></script>

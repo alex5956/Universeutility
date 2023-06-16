@@ -17,33 +17,20 @@ class Order
     use StripeTrait;
     use TimestampableEntity;
 
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id, ORM\GeneratedValue, ORM\Column(type: "integer")]
     private $id;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
+    #[ORM\Column(type: "string", length: 255)]
     private $reference;
 
-    /**
-     * @ORM\Column(type="float")
-     */
+    #[ORM\Column(type: "float")]
     private $price;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="orders")
-     */
+    #[ORM\ManyToOne(targetEntity: "App\Entity\User", inversedBy: "orders")]
     private $user;
 
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Product", inversedBy="orders")
-     */
+    #[ORM\ManyToOne(targetEntity: "App\Entity\Product", inversedBy: "orders")]
     private $product;
-
     public function getId(): ?int
     {
         return $this->id;

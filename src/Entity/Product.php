@@ -2,52 +2,41 @@
 
 namespace App\Entity;
 
-use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ProductRepository;
 
-/**
- * @ORM\Entity(repositoryClass=ProductRepository::class)
- */
+
+#[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
     const DEVISE='eur';
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
-    private ?int $id;
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column]
+    private ?int $id = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
 
-    /**
-     * @ORM\Column(type="string", length=255 ,nullable=true)
-     */
-    private $idKey;
+    #[ORM\Column(length: 255)]
+    private ?string $name = null;
 
-    /**
-     * @ORM\ManyToMany(targetEntity=User::class, inversedBy="products")
-     */
-    private $user;
+    #[ORM\Column]
+    private ?int $price = null;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $image;
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'products')]
+    private Collection $users;
 
-    /**
-     * @ORM\Column(type="float")
-     */
-    private $price;
+    #[ORM\Column(type: Types::BLOB)]
+    private $file = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $image = null;
 
     public function __construct()
     {
-        $this->user = new ArrayCollection();
+        $this->users = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -60,45 +49,57 @@ class Product
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name): static
     {
         $this->name = $name;
 
         return $this;
     }
 
-    public function getIdKey(): ?string
+    public function getPrice(): ?int
     {
-        return $this->idKey;
+        return $this->price;
     }
 
-    public function setIdKey(string $idKey): self
+    public function setPrice(int $price): static
     {
-        $this->idKey = $idKey;
+        $this->price = $price;
 
         return $this;
     }
 
     /**
-     * @return Collection|User[]
+     * @return Collection<int, User>
      */
-    public function getUser(): Collection
+    public function getUsers(): Collection
     {
-        return $this->user;
+        return $this->users;
     }
 
-    public function addUser(User $user): self
+    public function addUser(User $user): static
     {
-        if (!$this->user->contains($user)) {
-            $this->user[] = $user;
+        if (!$this->users->contains($user)) {
+            $this->users->add($user);
         }
 
         return $this;
     }
 
-    public function removeUser(User $user): self
+    public function removeUser(User $user): static
     {
-        $this->user->removeElement($user);
+        $this->users->removeElement($user);
+
+        return $this;
+    }
+
+    public function getFile()
+    {
+        return $this->file;
+    }
+
+    public function setFile($file): static
+    {
+        $this->file = $file;
 
         return $this;
     }
@@ -108,22 +109,11 @@ class Product
         return $this->image;
     }
 
-    public function setImage(string $image): self
+    public function setImage(string $image): static
     {
         $this->image = $image;
 
         return $this;
     }
 
-    public function getPrice(): ?float
-    {
-        return $this->price;
-    }
-
-    public function setPrice(float $price): self
-    {
-        $this->price = $price;
-
-        return $this;
-    }
 }
